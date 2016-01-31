@@ -436,6 +436,13 @@ var Select = React.createClass({
 	},
 
 	handleInputBlur (event) {
+		// Fix by Alan to IE11 issue, see https://github.com/JedWatson/react-select/issues/495
+		var menuDOM = React.findDOMNode(this.refs.menu);
+ 		if (document.activeElement.isEqualNode(menuDOM)) {
+ 			return;
+ 		}
+ 		// End Fix by Alan
+
 		this._blurTimeout = setTimeout(() => {
 			if (this._focusAfterUpdate || !this.isMounted()) return;
 			this.setState({
