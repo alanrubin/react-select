@@ -507,8 +507,7 @@ var Select = React.createClass({
 		var _this7 = this;
 
 		// Fix by Alan to IE11 issue, see https://github.com/JedWatson/react-select/issues/495
-		var menuDOM = React.findDOMNode(this.refs.menu);
-		if (document.activeElement.isEqualNode(menuDOM)) {
+		if (this.refs.menu && document.activeElement.isEqualNode(React.findDOMNode(this.refs.menu))) {
 			return;
 		}
 		// End Fix by Alan
